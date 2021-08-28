@@ -1,0 +1,11 @@
+10;
+Javier Soto;350;8;aventura;
+Joaquin Rinaldi;280;12;paisaje;
+Juan Francisco Ortega;190;7;aventura;
+Juliana Villar;340;5;degustacion;
+Agustina Milla;120;4;paisaje;
+Gustavo Flores;380;8;aventura;
+Damian Gonzalez;130;7;degustacion;
+Martin Herrero;210;9;degustacion;
+Fabiana Rios;345;6;paisaje;
+Gabriela Sanchez;90;3;aventura;
