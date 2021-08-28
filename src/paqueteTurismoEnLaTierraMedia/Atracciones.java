@@ -24,7 +24,7 @@ public class Atracciones {
 
 				linea = br.readLine();
 
-				for (int i = 0; i < 10; i++) {
+				for (int i = 0; i < dimensionArray; i++) {
 					try {
 						unaAtraccion = linea.split(";");
 						String nombre = unaAtraccion[0];
@@ -54,7 +54,7 @@ public class Atracciones {
 				}catch (Exception e2) {
 					e2.printStackTrace();
 				}
-			};
+			}
 
 
 	}

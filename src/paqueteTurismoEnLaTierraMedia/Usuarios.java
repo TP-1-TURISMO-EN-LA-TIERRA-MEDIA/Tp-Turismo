@@ -24,7 +24,7 @@ public class Usuarios {
 
 			linea = br.readLine();
 
-			for (int i = 0; i < 10; i++) {
+			for (int i = 0; i < dimensionArray; i++) {
 				try {
 					unUsuario = linea.split(";");
 					String nombre = unUsuario[0];
@@ -53,7 +53,7 @@ public class Usuarios {
 			}catch (Exception e2) {
 				e2.printStackTrace();
 			}
-		};
+		}
 
 	}
 
