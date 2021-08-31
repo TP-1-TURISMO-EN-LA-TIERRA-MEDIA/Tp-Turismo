@@ -7,6 +7,7 @@ public abstract class Promocion {
 	public String atraccion2;
 	public String tipoPromo;
 	public int oferta;
+	public String atraccionGratis;
 		
 	public Promocion(String tipoPromo, String tipoAtraccion, String atraccion1, String atraccion2) {
 		this.tipoPromo = tipoPromo;

@@ -7,6 +7,7 @@ public class PromoPorcentual extends Promocion {
 		super(tipoPromo, tipoAtraccion, atraccion1, atraccion2);
 		setDescuento(oferta);
 		
+		
 	}
 
 	public int getDescuento() {
