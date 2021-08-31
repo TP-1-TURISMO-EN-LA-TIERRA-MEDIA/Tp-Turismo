@@ -30,6 +30,7 @@ public class Promociones {
 			for (int i = 0; i < dimensionArray; i++) {
 				try {
 					unaPromocion = linea.split(";");
+					
 					String tipoPromo = unaPromocion[0];
 					String tipoAtraccion = unaPromocion[1];
 					String atraccion1 = unaPromocion[2];
