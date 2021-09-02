@@ -17,6 +17,10 @@ public abstract class Promocion {
 		
 		
 	}
-	
-	
+
+
+
+	public int getOferta() {
+		return this.oferta;
+	}
 }

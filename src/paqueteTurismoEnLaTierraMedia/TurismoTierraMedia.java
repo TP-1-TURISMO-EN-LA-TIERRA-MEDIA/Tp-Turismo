@@ -11,7 +11,9 @@ public class TurismoTierraMedia {
 		usuariosParque = new Usuarios(listadoUsuarios);
 		atraccionesParque = new Atracciones(listadoAtracciones);
 		promocionesParque = new Promociones(listadoPromociones);
+		Ofertas ofrecerOfertas = new Ofertas(usuariosParque, atraccionesParque, promocionesParque);
 	}
+	
 	
 	
 }

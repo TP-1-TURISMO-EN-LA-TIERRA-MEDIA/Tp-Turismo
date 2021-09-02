@@ -6,6 +6,7 @@ public class Usuario {
 	public double tiempo;
 	public String atraccionPreferida;
 	public double saldo;
+	private Itinerario itinerario;
 	
 
 	
@@ -16,11 +17,17 @@ public class Usuario {
 		this.tiempo = tiempo;
 		this.atraccionPreferida = atraccionPreferida;
 		this.setSaldo(0);
-
+		
 	}
 
 	private void setSaldo(double unSaldoInicial) {
 		this.saldo = unSaldoInicial;
 	}
+
+	public Itinerario getItinerario() {
+		return itinerario;
+	}
+	
+	
 
 }

@@ -5,6 +5,12 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Atracciones {
+	
+	
+	public Atraccion[] getAtracciones() {
+		return atracciones;
+	}
+
 	Atraccion[] atracciones;
 	
 	public Atracciones(String archivoAtracciones) {

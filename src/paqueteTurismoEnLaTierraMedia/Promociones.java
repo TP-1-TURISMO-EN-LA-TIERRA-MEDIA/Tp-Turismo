@@ -1,5 +1,6 @@
 package paqueteTurismoEnLaTierraMedia;
 
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -30,7 +31,6 @@ public class Promociones {
 			for (int i = 0; i < dimensionArray; i++) {
 				try {
 					unaPromocion = linea.split(";");
-					
 					String tipoPromo = unaPromocion[0];
 					String tipoAtraccion = unaPromocion[1];
 					String atraccion1 = unaPromocion[2];
@@ -95,5 +95,13 @@ public class Promociones {
 				e2.printStackTrace();
 			}
 		}
+		
+	}
+	
+	
+	public int getCosto(Promocion unaPromo) {
+	
+		
+		return 0;
 	}
 }
