@@ -6,12 +6,12 @@ import java.io.IOException;
 
 public class Atracciones {
 	
-	
+	Atraccion[] atracciones;
 	public Atraccion[] getAtracciones() {
 		return atracciones;
 	}
 
-	Atraccion[] atracciones;
+	
 	
 	public Atracciones(String archivoAtracciones) {
 

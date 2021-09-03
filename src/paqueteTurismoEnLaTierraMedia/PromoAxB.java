@@ -7,7 +7,13 @@ public class PromoAxB extends Promocion {
 		super(tipoPromo, tipoAtraccion, atraccion1, atraccion2);
 		setAtraccionGratis(oferta);
 		}
-
+/*	public PromoAxBFull(String tipoPromo, String tipoAtraccion, String atraccionesPromo, String atraccionesGratis) {
+		super(tipoPromo, tipoAtraccion, atraccionesPromo);
+		setAtraccionGratis(atraccionesGratis);
+		}
+	*/
+	
+	
 	public String getAtraccionGratis() {
 		return super.atraccionGratis;
 	}

@@ -18,7 +18,11 @@ public class Promociones {
 			br = new BufferedReader(fr);
 			
 			String linea = br.readLine(); // lee primera linea donde esta la dimension del arreglo
-			String[] unaPromocion = linea.split(";");
+			String[] unaPromocion = linea.split(";");// hay cuatro separaciones. 
+													 //la posicion 0 para el tipo de promo. 
+													 //la posicion 1 para el tipo de atraccion
+													 //la posicion 2 para las atracciones ofertadas (es otro String con n actracciones)
+													 //la posicion 3 para la oferta , descuento o n atracciones gratis
 
 			int dimensionArray = Integer.parseInt(unaPromocion[0]);
 
@@ -26,8 +30,7 @@ public class Promociones {
 			// promociones es el array donde se guardan todas las promociones
 
 			linea = br.readLine();
-			unaPromocion = linea.split(";");//
-						
+			
 			for (int i = 0; i < dimensionArray; i++) {
 				try {
 					unaPromocion = linea.split(";");
@@ -44,7 +47,7 @@ public class Promociones {
 								  + " " + this.promociones[i].tipoAtraccion.toString() +
 								  " " + this.promociones[i].atraccion1.toString() +
 								  " " + this.promociones[i].atraccion2.toString() +
-								  " " + this.promociones[i].oferta);
+								  " " + this.promociones[i].getDescuento());
 					
 					}
 					
@@ -57,14 +60,15 @@ public class Promociones {
 						  + " " + this.promociones[i].tipoAtraccion.toString() +
 						  " " + this.promociones[i].atraccion1.toString() +
 						  " " + this.promociones[i].atraccion2.toString() +
-						  " " + this.promociones[i].oferta);
+						  " " + this.promociones[i].costo);
 						 
 					}
 					
 					if (tipoPromo.equals("AxB")) {
 					//	List <Atraccion> juegosGratis = new ArrayList<Atraccion>();
 						
-						String atraccionGratis = unaPromocion[4]; 
+						String atraccionGratis = unaPromocion[unaPromocion.length-1]; 
+						
 						this.promociones[i] = new PromoAxB(tipoPromo, tipoAtraccion, atraccion1, atraccion2, atraccionGratis);
 						System.out.println("Promo: " + this.promociones[i].tipoPromo.toString()
 								  + " " + this.promociones[i].tipoAtraccion.toString() +

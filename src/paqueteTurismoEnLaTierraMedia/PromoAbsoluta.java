@@ -9,12 +9,12 @@ public class PromoAbsoluta extends Promocion {
 		
 	}
 
-	public double getCosto() {
-		return super.oferta;
+	public int getCosto() {
+		return super.costo;
 	}
 
-	public void setCosto(int oferta) {
-		super.oferta = oferta;
+	public void setCosto(int costo) {
+		super.costo = costo;
 	}
 
 	

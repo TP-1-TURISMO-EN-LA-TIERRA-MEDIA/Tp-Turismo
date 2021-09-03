@@ -27,7 +27,4 @@ public class Usuario {
 	public Itinerario getItinerario() {
 		return itinerario;
 	}
-	
-	
-
 }

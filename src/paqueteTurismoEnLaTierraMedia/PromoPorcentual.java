@@ -6,7 +6,7 @@ public class PromoPorcentual extends Promocion {
 	public PromoPorcentual(String tipoPromo, String tipoAtraccion, String atraccion1, String atraccion2, int oferta) {
 		
 		super(tipoPromo, tipoAtraccion, atraccion1, atraccion2);
-		setDescuento(oferta);
+		this.setDescuento(oferta);
 		
 	}
 
@@ -16,12 +16,15 @@ public class PromoPorcentual extends Promocion {
 	}
 
 	public void setDescuento(int descuento) {
+		//super.costo= descuento;
 		this.descuento = descuento;
 	}
 
 	
 		
-		public void setOferta(int costoTotal) {
-			super.oferta = costoTotal;
+		public void setCosto(int costoTotal) {
+			super.costo = costoTotal;
 		}
+		
+		
 }
