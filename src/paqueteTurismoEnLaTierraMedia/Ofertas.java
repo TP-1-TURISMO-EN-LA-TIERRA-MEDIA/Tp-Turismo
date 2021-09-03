@@ -25,7 +25,7 @@ public class Ofertas {
 			if (promocionesParque.promociones[i].tipoAtraccion.equals(usuario.atraccionPreferida)) {
 				sugeridas[contadorSugeridas] = promocionesParque.promociones[i];
 				contadorSugeridas++;
-				System.out.println("promo sugerida: prueba modificar desde githube  " + sugeridas[0].atraccion1);
+				System.out.println("promo sugerida: " + sugeridas[0].atraccion1);
 			}
 		}
 		
