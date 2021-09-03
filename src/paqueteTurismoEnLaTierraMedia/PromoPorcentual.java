@@ -3,9 +3,9 @@ package paqueteTurismoEnLaTierraMedia;
 public class PromoPorcentual extends Promocion {
 	private int descuento;
 	
-	public PromoPorcentual(String tipoPromo, String tipoAtraccion, String atraccion1, String atraccion2, int oferta) {
+	public PromoPorcentual(String tipoPromo, String tipoAtraccion, String[] atraccionesPromo, int oferta) {
 		
-		super(tipoPromo, tipoAtraccion, atraccion1, atraccion2);
+		super(tipoPromo, tipoAtraccion, atraccionesPromo);
 		this.setDescuento(oferta);
 		
 	}

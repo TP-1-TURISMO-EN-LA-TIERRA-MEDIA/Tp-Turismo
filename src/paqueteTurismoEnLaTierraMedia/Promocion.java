@@ -3,27 +3,42 @@ package paqueteTurismoEnLaTierraMedia;
 public abstract class Promocion {
 	
 	public String tipoAtraccion;
-	public String atraccion1;
-	public String atraccion2;
 	public String tipoPromo;
+
 	public int costo;
-	public String atraccionGratis;
-	private Atraccion[] atraccionesDeLaPromo;
+	private String[] atraccionesGratis;
+	
+
+
+
+	private String[] atraccionesDeLaPromo;
 		
-	public Promocion(String tipoPromo, String tipoAtraccion, String atraccion1, String atraccion2) {
+	public Promocion(String tipoPromo, String tipoAtraccion,  String[] atraccionesPromo) {
 		//String auxiliar = atraccionesPomocionadas.;
 		
 		this.tipoPromo = tipoPromo;
 		this.tipoAtraccion = tipoAtraccion;
-		this.atraccion1 = atraccion1;
-		this.atraccion2 = atraccion2;
+		atraccionesDeLaPromo= atraccionesPromo;
 		
 		
 		
 	}
+	public String[] getAtraccionesDeLaPromo() {
+		return atraccionesDeLaPromo;
+	}
 
+	public String[] getAtraccionesGratis() {
+		return atraccionesGratis;
+	}
+	public void setAtraccionesGratis(String[] atraccionesGratis) {
+		this.atraccionesGratis = atraccionesGratis;
+	}
 
+	public void setAtraccionesDeLaPromo(String[] atraccionesDeLaPromo) {
+		this.atraccionesDeLaPromo = atraccionesDeLaPromo;
+	}
 
+	
 	public int getCosto() {
 		return this.costo;
 	}
