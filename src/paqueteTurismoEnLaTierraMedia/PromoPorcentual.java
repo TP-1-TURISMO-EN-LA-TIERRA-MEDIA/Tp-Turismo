@@ -3,10 +3,10 @@ package paqueteTurismoEnLaTierraMedia;
 public class PromoPorcentual extends Promocion {
 	private int descuento;
 	
-	public PromoPorcentual(String tipoPromo, String tipoAtraccion, String[] atraccionesPromo, int oferta) {
+	public PromoPorcentual(String tipoPromo, String tipoAtraccion, String[] atraccionesPromo, int descuento) {
 		
 		super(tipoPromo, tipoAtraccion, atraccionesPromo);
-		this.setDescuento(oferta);
+		this.setDescuento(descuento);
 		
 	}
 
@@ -23,7 +23,8 @@ public class PromoPorcentual extends Promocion {
 	
 		
 		public void setCosto(int costoTotal) {
-			super.costo = costoTotal;
+			
+			super.setCosto(costoTotal);
 		}
 		
 		

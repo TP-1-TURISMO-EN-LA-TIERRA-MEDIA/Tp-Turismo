@@ -10,11 +10,11 @@ public class PromoAbsoluta extends Promocion {
 	}
 
 	public int getCosto() {
-		return super.costo;
+		return super.getCosto();
 	}
 
 	public void setCosto(int costo) {
-		super.costo = costo;
+		super.setCosto(costo);
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 10;
 Porcentual;aventura;Bosque Negro,Mordor;20;
 Absoluta;degustacion;Lothlorien,La Comarca;36;
-AxB;paisajes;Mnnas Tirith,Abismo de Helm;Erebor,Jungla;
+AxB;paisajes;Mnnas Tirith,Abismo de Helm;Erebor,Jungla,Zafari;
 Porcentual;degustacion;La Comarca,Bajo el Mar;30;
 Absoluta;aventura;Splash Mountain,Jungle Cruise;25;
 Absoluta;paisajes;Erebor,Minas Tirith;12;

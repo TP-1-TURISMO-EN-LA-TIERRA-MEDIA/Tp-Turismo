@@ -43,8 +43,8 @@ public class Promociones {
 						int oferta = Integer.parseInt(unaPromocion[3]);
 						this.promociones[i] = new PromoPorcentual(tipoPromo, tipoAtraccion, atraccionesPromo, oferta);
 
-						System.out.println("Promo: " + this.promociones[i].tipoPromo.toString() + " "
-								+ this.promociones[i].tipoAtraccion.toString() + " "
+						System.out.println("Promo: " + this.promociones[i].getTipoPromo().toString() + " "
+								+ this.promociones[i].getTipoAtraccion().toString() + " "
 								+ this.promociones[i].getAtraccionesDeLaPromo()[0] + " "
 								+ this.promociones[i].getDescuento());
 
@@ -54,9 +54,9 @@ public class Promociones {
 						int oferta = Integer.parseInt(unaPromocion[3]);
 						this.promociones[i] = new PromoAbsoluta(tipoPromo, tipoAtraccion, atraccionesPromo, oferta);
 
-						System.out.println("Promo: " + this.promociones[i].tipoPromo.toString() + " "
-								+ this.promociones[i].tipoAtraccion.toString() + " "
-								+ this.promociones[i].getAtraccionesDeLaPromo()[0] + " " + this.promociones[i].costo);
+						System.out.println("Promo: " + this.promociones[i].getTipoPromo().toString() + " "
+								+ this.promociones[i].getTipoAtraccion().toString() + " "
+								+ this.promociones[i].getAtraccionesDeLaPromo()[0] + " " + this.promociones[i].getCosto());
 
 					}
 
@@ -67,8 +67,8 @@ public class Promociones {
 
 						this.promociones[i] = new PromoAxB(tipoPromo, tipoAtraccion, atraccionesPromo,
 								atraccionesGratis);
-						System.out.println("Promo: " + this.promociones[i].tipoPromo.toString());
-						System.out.println("Tipo: " + this.promociones[i].tipoAtraccion.toString());
+						System.out.println("Promo: " + this.promociones[i].getTipoPromo().toString());
+						System.out.println("Tipo: " + this.promociones[i].getTipoAtraccion().toString());
 						System.out.print("Atracciones Ofrecidas: ");
 						for (int j = 0; j < this.promociones[i].getAtraccionesDeLaPromo().length; j++) {
 							System.out.print(this.promociones[i].getAtraccionesDeLaPromo()[j].toString() + " - ");							
@@ -106,7 +106,7 @@ public class Promociones {
 	}
 
 	public int getCosto(Promocion unaPromo) {
-
+		
 		return 0;
 	}
 }
