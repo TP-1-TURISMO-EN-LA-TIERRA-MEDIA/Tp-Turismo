@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Promociones {
 
-	Promocion[] promociones;
+	private Promocion[] promociones;
 
 	public Promociones(String archivoPromociones) {
 		FileReader fr = null;
@@ -109,4 +109,11 @@ public class Promociones {
 		
 		return 0;
 	}
+
+	public Promocion[] getPromociones() {
+		return promociones;
+	}
+
+	
+	
 }

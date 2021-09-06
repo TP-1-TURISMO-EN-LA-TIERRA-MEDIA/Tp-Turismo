@@ -26,6 +26,13 @@ public class PromoPorcentual extends Promocion {
 			
 			super.setCosto(costoTotal);
 		}
+
+
+		@Override
+		public int compareTo(Promocion o) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
 		
 		
 }

@@ -1,6 +1,6 @@
 package paqueteTurismoEnLaTierraMedia;
 
-public abstract class Promocion {
+public abstract class Promocion implements Comparable <Promocion>{
 
 	private String tipoAtraccion;
 	private String tipoPromo;
@@ -9,6 +9,7 @@ public abstract class Promocion {
 	private String[] atraccionesGratis;
 
 	private String[] atraccionesDeLaPromo;
+	private int tiempoPromo;
 
 	public Promocion(String tipoPromo, String tipoAtraccion, String[] atraccionesPromo) {
 		// String auxiliar = atraccionesPomocionadas.;
@@ -19,15 +20,37 @@ public abstract class Promocion {
 
 	}
 
+	@Override
+    public int compareTo(Promocion promo) {
+        if (costo < promo.costo) {
+            return -1;
+        }
+        if (costo > promo.costo) {
+            return 1;
+        }
+        return 0;
+    }
 	
 	public String[] getAtraccionesDeLaPromo() {
-		return atraccionesDeLaPromo;
+		return atraccionesDeLaPromo;//separadas por ","
 	}
 
 	
 	public String getTipoAtraccion() {
 		return tipoAtraccion;
 	}
+
+
+	public int getTiempoPromo() {
+		return tiempoPromo;
+	}
+
+
+
+	public void setTiempoPromo(int tiempoPromo) {
+		this.tiempoPromo = tiempoPromo;
+	}
+
 
 
 	public void setTipoAtraccion(String tipoAtraccion) {
@@ -72,4 +95,6 @@ public abstract class Promocion {
 	
 	protected abstract int getDescuento();
 
+
+	
 }
