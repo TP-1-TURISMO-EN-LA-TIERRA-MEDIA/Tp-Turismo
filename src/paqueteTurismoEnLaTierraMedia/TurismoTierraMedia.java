@@ -11,7 +11,7 @@ public class TurismoTierraMedia {
 			String listadoAtracciones, String listadoPromociones) {
 		usuariosParque = new Usuarios(listadoUsuarios);
 		atraccionesParque = new Atracciones(listadoAtracciones);
-		promocionesParque = new Promociones(listadoPromociones);
+		promocionesParque = new Promociones(listadoPromociones, atraccionesParque);
 		
 		//Ofrecer promociones a los usuarios
 		for (int i = 0; i < usuariosParque.usuarios.length; i++) {

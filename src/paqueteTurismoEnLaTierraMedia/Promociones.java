@@ -8,7 +8,7 @@ public class Promociones {
 
 	private Promocion[] promociones;
 
-	public Promociones(String archivoPromociones) {
+	public Promociones(String archivoPromociones, Atracciones atracciones) {
 		FileReader fr = null;
 		BufferedReader br = null;
 
@@ -38,28 +38,15 @@ public class Promociones {
 					String tipoPromo = unaPromocion[0];
 					String tipoAtraccion = unaPromocion[1];
 					String[] atraccionesPromo = unaPromocion[2].split(",");
-
+					
 					if (tipoPromo.equals("Porcentual")) {
 						int oferta = Integer.parseInt(unaPromocion[3]);
 						this.promociones[i] = new PromoPorcentual(tipoPromo, tipoAtraccion, atraccionesPromo, oferta);
-
-//						System.out.println("Promo: " + this.promociones[i].getTipoPromo().toString() + " "
-//								+ this.promociones[i].getTipoAtraccion().toString() + " "
-//								+ this.promociones[i].getAtraccionesDeLaPromo()[0] + " "
-//								+ this.promociones[i].getDescuento());
-
 					}
-
 					if (tipoPromo.equals("Absoluta")) {
 						int oferta = Integer.parseInt(unaPromocion[3]);
 						this.promociones[i] = new PromoAbsoluta(tipoPromo, tipoAtraccion, atraccionesPromo, oferta);
-
-//						System.out.println("Promo: " + this.promociones[i].getTipoPromo().toString() + " "
-//								+ this.promociones[i].getTipoAtraccion().toString() + " "
-//								+ this.promociones[i].getAtraccionesDeLaPromo()[0] + " " + this.promociones[i].getCosto());
-
 					}
-
 					if (tipoPromo.equals("AxB")) {
 						// el codigo de impresion hay que borrarlo es solo para ver si hacia bien el metodo
 
@@ -67,27 +54,13 @@ public class Promociones {
 
 						this.promociones[i] = new PromoAxB(tipoPromo, tipoAtraccion, atraccionesPromo,
 								atraccionesGratis);
-//						System.out.println("Promo: " + this.promociones[i].getTipoPromo().toString());
-//						System.out.println("Tipo: " + this.promociones[i].getTipoAtraccion().toString());
-//						System.out.print("Atracciones Ofrecidas: ");
-//						for (int j = 0; j < this.promociones[i].getAtraccionesDeLaPromo().length; j++) {
-//							System.out.print(this.promociones[i].getAtraccionesDeLaPromo()[j].toString() + " - ");							
-//						}
-//						System.out.println();
-//						System.out.print("Atracciones gratis comprando la promo: ");
-//						for (int k = 0; k < this.promociones[i].getAtraccionesGratis().length; k++) {
-//							System.out.print(this.promociones[i].getAtraccionesGratis()[k].toString() + " - ");							
-//						}
-//						System.out.println();
-//						System.out.println();
 					}
-
 					linea = br.readLine();
-
+					this.costoPromocion(this.promociones[i], atracciones.getAtracciones());
+					this.setTiempoPromocion(this.promociones[i], atracciones.getAtracciones());
 				} catch (Exception x) {
 					System.out.println("Error en la lectura del archivo!!");
 					x.printStackTrace();
-
 				}
 			}
 		} catch (IOException e) {
@@ -102,18 +75,58 @@ public class Promociones {
 				e2.printStackTrace();
 			}
 		}
-
 	}
 
+	
 	public int getCosto(Promocion unaPromo) {
 		
 		return 0;
 	}
 
+	
 	public Promocion[] getPromociones() {
 		return promociones;
 	}
 
+	public double costoPromocion(Promocion unaPromo, Atraccion[] atracciones) {
+		// este metodo busca denro del arreglo de las promocioes y saca el costo del
+		// arreglo donde estan las atracciones
+		// System.out.println("Tipo Promo: " + unaPromo.getTipoPromo());
+		if (unaPromo.getTipoPromo().equals("Absoluta")) {
+
+			return unaPromo.getCosto();
+		} else {
+			double precio = 0;
+			for (int i = 0; i < unaPromo.getAtraccionesDeLaPromo().length; i++) {
+				for (int j = 0; j < atracciones.length; j++) {
+					if (atracciones[j].getNombre().equals(unaPromo.getAtraccionesDeLaPromo()[i])) {
+						precio += atracciones[j].getCosto();
+						unaPromo.setCosto(precio);
+					}
+				}
+			}
+			if (unaPromo.getTipoPromo().equals("Porcentual")) {
+				precio = precio - (precio * unaPromo.getDescuento() / 100);
+				unaPromo.setCosto(precio);
+				return precio;
+
+			} else {
+				unaPromo.setCosto(precio);
+				return precio;
+			}
+		}
+	}
 	
-	
+	public void setTiempoPromocion(Promocion unaPromo, Atraccion[] atracciones) {
+		int tiempo = 0;
+		for (int i = 0; i < unaPromo.getAtraccionesDeLaPromo().length; i++) {
+			for (int j = 0; j < atracciones.length; j++) {
+				if (atracciones[j].getNombre().equals(unaPromo.getAtraccionesDeLaPromo()[i])) {
+					tiempo += atracciones[j].getTiempo();
+					unaPromo.setTiempoPromo(tiempo);
+				}
+			}
+		}
+	}
+
 }

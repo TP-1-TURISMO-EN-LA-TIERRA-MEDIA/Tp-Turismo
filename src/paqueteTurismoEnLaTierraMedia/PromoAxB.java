@@ -22,10 +22,5 @@ public class PromoAxB extends Promocion {
 		return 0;
 	}
 
-	@Override
-	public int compareTo(Promocion o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }
