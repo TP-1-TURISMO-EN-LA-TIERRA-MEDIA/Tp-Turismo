@@ -15,10 +15,10 @@ public class TurismoTierraMedia {
 		
 		//Ofrecer promociones a los usuarios
 		for (int i = 0; i < usuariosParque.usuarios.length; i++) {
-			System.out.println("Usuario: " + usuariosParque.usuarios[i].getNombre() + " Ofertas sugeridas:");
+			System.out.println("Usuario: " + usuariosParque.usuarios[i].getNombre() );
 			ofertas = new Ofertas(usuariosParque.usuarios[i], atraccionesParque, promocionesParque);
 			
-			System.out.println();
+			//System.out.println();
 		}
 		
 	}

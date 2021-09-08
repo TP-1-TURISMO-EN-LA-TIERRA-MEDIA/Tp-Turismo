@@ -19,60 +19,50 @@ public class Ofertas {
 			if (promocionesParque.getPromociones()[i].getTipoAtraccion().equals(usuario.getAtraccionPreferida())) {
 				this.sugeridas[contadorSugeridas] = promocionesParque.getPromociones()[i];
 
-				for (int j = 0; j < this.sugeridas[contadorSugeridas].getAtraccionesDeLaPromo().length; j++) {
-					System.out.print(this.sugeridas[contadorSugeridas].getAtraccionesDeLaPromo()[j].toString());
-					System.out.print(" - ");
-				}
+//				for (int j = 0; j < this.sugeridas[contadorSugeridas].getAtraccionesDeLaPromo().length; j++) {
+//					System.out.print(this.sugeridas[contadorSugeridas].getAtraccionesDeLaPromo()[j].toString());
+//					System.out.print(" - ");
+//				}
 				costoPromo = costoPromocion(this.sugeridas[contadorSugeridas], atraccionesParque.getAtracciones());
-				System.out.println("costo de la promo:  " + costoPromo);
-				System.out.println();
+//				System.out.println("costo de la promo:  " + costoPromo);
+				// System.out.println();
 				contadorSugeridas++;
 			}
 
 		}
-		System.out.println();
-		
+		//System.out.println();
+
 		this.ordenarPorMayorCosto();
-		System.out.println("cantidad sugeridas::::" + contadorSugeridas);
-		// REVISAR QUE ALGO SALE MAL
-		for (int i = 0; i <  contadorSugeridas; i++) {
-			for (int j = 0; j < this.sugeridas[i].getAtraccionesDeLaPromo().length; j++) {
-				System.out.print(this.sugeridas[i].getAtraccionesDeLaPromo()[j].toString());
-				System.out.print(" - " );
-				costoPromo = costoPromocion(this.sugeridas[i], atraccionesParque.getAtracciones());
-				System.out.println("costo de la promo:  " + costoPromo);
-			}
-			
-			System.out.println();
+
+		System.out.println("Promociones sugeridas: " + contadorSugeridas + " ");
+
+		for (int i = 0; i < contadorSugeridas; i++) {
+			System.out.print(i+1 + ") ");
+			this.mostrarPromo(this.sugeridas[i]);
+			costoPromo = costoPromocion(this.sugeridas[i], atraccionesParque.getAtracciones());
+			System.out.println("costo de la promo:  " + costoPromo);
+		}
+
+		System.out.println();
+	}
+
+	private void mostrarPromo(Promocion promocion) {
+		for (int i = 0; i < promocion.getAtraccionesDeLaPromo().length; i++) {
+			System.out.print(promocion.getAtraccionesDeLaPromo()[i].toString());
+			System.out.print(" - ");
+
 		}
 
 	}
 
 	public void ordenarPorMayorCosto() {
-		Arrays.sort(this.sugeridas, 0, contadorSugeridas - 1, new comparadorPorMayorCosto());
+		Arrays.sort(this.sugeridas, 0, contadorSugeridas, new comparadorPorMayorCosto());
 	}
-
-	// implementar el comparator para ordenar
-//	private void ordenarPorCosto(int contadorSugeridas) {
-//		// filtrar el costo segun el tipo de promo
-//
-//		for (int i = 0; i < (contadorSugeridas - 1); i++) {
-//			for (int j = i + 1; j < contadorSugeridas; j++) {
-//				if (this.sugeridas[i].getCosto() > this.sugeridas[j].getCosto()) {
-//					Promocion aux = this.sugeridas[i];
-//					this.sugeridas[i] = (this.sugeridas[j]);
-//					this.sugeridas[j] = aux;
-//
-//				}
-//			}
-//		}
-//
-//	}
 
 	public double costoPromocion(Promocion unaPromo, Atraccion[] atracciones) {
 		// este metodo busca denro del arreglo de las promocioes y saca el costo del
 		// arreglo donde estan las atracciones
-		System.out.println("Tipo Promo: " + unaPromo.getTipoPromo());
+		// System.out.println("Tipo Promo: " + unaPromo.getTipoPromo());
 		if (unaPromo.getTipoPromo().equals("Absoluta")) {
 
 			return unaPromo.getCosto();

@@ -41,9 +41,9 @@ public class Atracciones {
 						String tipo = unaAtraccion[4];
 						this.atracciones[i] = new Atraccion(nombre, costo, tiempo, cupo, tipo);
 						linea = br.readLine();
-						System.out.println(atracciones[i].getNombre() + " costo: " +
-								atracciones[i].getCosto() + " Tiempo : " + atracciones[i].getTiempo() + 
-								" cupo: " + atracciones[i].getCupo() + " Tipo de Atraccion: " + atracciones[i].getTipo());
+//						System.out.println(atracciones[i].getNombre() + " costo: " +
+//								atracciones[i].getCosto() + " Tiempo : " + atracciones[i].getTiempo() + 
+//								" cupo: " + atracciones[i].getCupo() + " Tipo de Atraccion: " + atracciones[i].getTipo());
 					} catch (Exception x) {
 						System.out.println("Error en la lectura del archivo!!");
 						x.printStackTrace();

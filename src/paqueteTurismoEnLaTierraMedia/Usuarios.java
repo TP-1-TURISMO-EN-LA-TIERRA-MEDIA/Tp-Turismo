@@ -33,9 +33,9 @@ public class Usuarios {
 					String tipo = unUsuario[3];
 					this.usuarios[i] = new Usuario(nombre, presupuesto, tiempo, tipo);
 					linea = br.readLine();
-					System.out.println(usuarios[i].getNombre() + " Presupuesto: " +
-							usuarios[i].getPresupuesto() + " Tiempo disponible: " + usuarios[i].getTiempo() + 
-							" Atraccion preferida: " + usuarios[i].getAtraccionPreferida());
+//					System.out.println(usuarios[i].getNombre() + " Presupuesto: " +
+//							usuarios[i].getPresupuesto() + " Tiempo disponible: " + usuarios[i].getTiempo() + 
+//							" Atraccion preferida: " + usuarios[i].getAtraccionPreferida());
 				} catch (Exception x) {
 					System.out.println("Error en la lectura del archivo!!");
 					x.printStackTrace();
