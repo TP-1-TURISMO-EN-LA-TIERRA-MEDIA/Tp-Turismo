@@ -16,7 +16,6 @@ public class PromoPorcentual extends Promocion {
 	}
 
 	public void setDescuento(int descuento) {
-		//super.costo= descuento;
 		this.descuento = descuento;
 	}
 

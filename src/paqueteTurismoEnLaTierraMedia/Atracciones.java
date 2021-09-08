@@ -7,6 +7,7 @@ import java.io.IOException;
 public class Atracciones {
 	
 	Atraccion[] atracciones;
+	
 	public Atraccion[] getAtracciones() {
 		return atracciones;
 	}
