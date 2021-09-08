@@ -9,7 +9,7 @@ public class PromoAbsoluta extends Promocion {
 		
 	}
 
-	public int getCosto() {
+	public double getCosto() {
 		return super.getCosto();
 	}
 

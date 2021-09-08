@@ -5,7 +5,7 @@ public abstract class Promocion implements Comparable <Promocion>{
 	private String tipoAtraccion;
 	private String tipoPromo;
 
-	private int costo;
+	private double costo;
 	private String[] atraccionesGratis;
 
 	private String[] atraccionesDeLaPromo;
@@ -83,12 +83,12 @@ public abstract class Promocion implements Comparable <Promocion>{
 	}
 
 	
-	public int getCosto() {
+	public double getCosto() {
 		return this.costo;
 	}
 
 	
-	public void setCosto(int costo) {
+	public void setCosto(double costo) {
 		this.costo = costo;
 	}
 

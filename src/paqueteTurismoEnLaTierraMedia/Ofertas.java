@@ -31,14 +31,14 @@ public class Ofertas {
 			}
 
 		}
-
 		System.out.println();
-		ordenarPorCosto(this.sugeridas, contadorSugeridas);
+		ordenarPorCosto( contadorSugeridas);
+		
 
 	}
 
 	// implementar el comparator para ordenar
-	private Promocion[] ordenarPorCosto(Promocion[] sugeridas, int contadorSugeridas) {
+	private void ordenarPorCosto( int contadorSugeridas) {
 		// filtrar el costo segun el tipo de promo
 
 		for (int i = 0; i < (contadorSugeridas - 1); i++) {
@@ -47,19 +47,20 @@ public class Ofertas {
 					Promocion aux = this.sugeridas[i];
 					this.sugeridas[i] = (this.sugeridas[j]);
 					this.sugeridas[j] = aux;
+			
 				}
 			}
 		}
-		return sugeridas;
-
+		
 	}
 
+	
 	public double costoPromocion(Promocion unaPromo, Atraccion[] atracciones) {
 		// este metodo busca denro del arreglo de las promocioes y saca el costo del
 		// arreglo donde estan las atracciones
 		System.out.println("Tipo Promo: " + unaPromo.getTipoPromo());
-		if (unaPromo.getTipoPromo().equals("Absoluta") ) {
-			
+		if (unaPromo.getTipoPromo().equals("Absoluta")) {
+
 			return unaPromo.getCosto();
 		} else {
 			double precio = 0;
@@ -67,16 +68,19 @@ public class Ofertas {
 				for (int j = 0; j < atracciones.length; j++) {
 					if (atracciones[j].getNombre().equals(unaPromo.getAtraccionesDeLaPromo()[i])) {
 						precio += atracciones[j].getCosto();
+						unaPromo.setCosto(precio);
 					}
 				}
 			}
-			if (unaPromo.getTipoPromo().equals("Porcentual") ) {
-				return (precio = precio - (precio * unaPromo.getDescuento() / 100));
-
-			} else
+			if (unaPromo.getTipoPromo().equals("Porcentual")) {
+				precio = precio - (precio * unaPromo.getDescuento() / 100);
+				unaPromo.setCosto(precio);
 				return precio;
 
+			} else {
+				unaPromo.setCosto(precio);
+				return precio;
+			}
 		}
-
 	}
 }
