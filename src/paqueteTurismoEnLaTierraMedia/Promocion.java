@@ -10,6 +10,7 @@ public abstract class Promocion implements Comparable <Promocion>{
 
 	private String[] atraccionesDeLaPromo;
 	private int tiempoPromo;
+	
 
 	public Promocion(String tipoPromo, String tipoAtraccion, String[] atraccionesPromo) {
 		// String auxiliar = atraccionesPomocionadas.;
@@ -20,16 +21,7 @@ public abstract class Promocion implements Comparable <Promocion>{
 
 	}
 
-	@Override
-    public int compareTo(Promocion promo) {
-        if (costo < promo.costo) {
-            return -1;
-        }
-        if (costo > promo.costo) {
-            return 1;
-        }
-        return 0;
-    }
+
 	
 	public String[] getAtraccionesDeLaPromo() {
 		return atraccionesDeLaPromo;//separadas por ","

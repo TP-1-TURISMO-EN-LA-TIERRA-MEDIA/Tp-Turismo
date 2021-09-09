@@ -52,31 +52,45 @@ public class Ofertas {
 		System.out.println();
 	}
 
-	
 	private void comprarPromo(Usuario usuario, Promocion promocion, Atracciones atraccionesParque) {
-		if (lasAtraccionesDeLaPromoTienCupo(promocion.getAtraccionesDeLaPromo(), atraccionesParque)) {
+		if (lasAtraccionesDeLaPromoTienenCupo(promocion.getAtraccionesDeLaPromo(), atraccionesParque)) {
 			restarCupoDeLasAtraccionesPromocion(promocion.getAtraccionesDeLaPromo(), atraccionesParque);
 			usuario.setSaldo(usuario.getSaldo() - promocion.getCosto());
-			usuario.setTiempo(usuario.getTiempo()-tiempoDeLaPromo(promocion.getAtraccionesDeLaPromo(), atraccionesParque));
-		} else {
-			System.out.println("Alguna de las atracciones no tiene cupo.");
+			usuario.setTiempo(usuario.getTiempo() - promocion.getTiempoPromo());
+		
+			//agregarAlItinerario(usuario, atraccionesParque);
 		}
 	}
 
 	private double tiempoDeLaPromo(String[] atraccionesDeLaPromo, Atracciones atraccionesParque) {
-		
+
 		return 0;
 	}
 
-
 	private void restarCupoDeLasAtraccionesPromocion(String[] atraccionesDeLaPromo, Atracciones atraccionesParque) {
-		// HACER ESTE METODO!!!!!!!!!!!!
-		
+		for (int i = 0; i < atraccionesDeLaPromo.length; i++) {
+			for (int j = 0; j < atraccionesParque.getAtracciones().length; j++) {
+				if (atraccionesDeLaPromo[i].equals(atraccionesParque.getAtracciones()[j].getNombre())) {
+					atraccionesParque.getAtracciones()[j].setCupo(atraccionesParque.getAtracciones()[j].getCupo()-1);
+				}
+			}
+		}
 	}
 
-	private boolean lasAtraccionesDeLaPromoTienCupo(String[] atraccionesDeLaPromo, Atracciones atraccionesParque) {
-		// HACER ESTE METODO!!!!!!!!!!!!
-		return true;
+	private boolean lasAtraccionesDeLaPromoTienenCupo(String[] atraccionesDeLaPromo, Atracciones atraccionesParque) {
+		boolean hayCupo = true;
+		for (int i = 0; i < atraccionesDeLaPromo.length; i++) {
+			for (int j = 0; j < atraccionesParque.getAtracciones().length; j++) {
+				if (atraccionesDeLaPromo[i].equals(atraccionesParque.getAtracciones()[j].getNombre())) {
+					if (atraccionesParque.getAtracciones()[j].getCupo() < 1) {
+						System.out.println("La atraccion " + atraccionesParque.getAtracciones()[j].getNombre()
+								+ " no tiene mas cupo." + "\n" + "No es posible comprar la promocion.");
+						hayCupo = false;
+					}
+				}
+			}
+		}
+		return hayCupo;
 	}
 
 	private void restarCupoAtraccion(String atraccion, Atracciones atraccionesParque) {

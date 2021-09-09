@@ -6,7 +6,7 @@ public class Usuario {
 	private double tiempo;
 	private String atraccionPreferida;
 	private double saldo;
-	private Itinerario itinerario;
+	private Itinerario[] itinerario;
 	
 
 	
@@ -17,12 +17,13 @@ public class Usuario {
 		this.tiempo = tiempo;
 		this.atraccionPreferida = atraccionPreferida;
 		this.saldo=presupuesto;
+		this.itinerario = new Itinerario[50];
 		
 	}
 	
 
 
-	public Itinerario getItinerario() {
+	public Itinerario[] getItinerario() {
 		return itinerario;
 	}
 	
