@@ -5,7 +5,7 @@ public class TurismoTierraMedia {
 	private static Usuarios usuariosParque;
 	private static Atracciones atraccionesParque;
 	private static Promociones promocionesParque;
-	Ofertas ofertas ;
+	Ofertable ofertas ;
 	
 	public TurismoTierraMedia(String listadoUsuarios,
 			String listadoAtracciones, String listadoPromociones) {
@@ -16,8 +16,8 @@ public class TurismoTierraMedia {
 		//Ofrecer promociones a los usuarios
 		for (int i = 0; i < usuariosParque.usuarios.length; i++) {
 			System.out.println("Usuario: " + usuariosParque.usuarios[i].getNombre() + "\n");
-			ofertas = new Ofertas(usuariosParque.usuarios[i], atraccionesParque, promocionesParque);
-			
+			ofertas = new Ofertable(usuariosParque.usuarios[i], atraccionesParque, promocionesParque);
+			usuariosParque.usuarios[i].mostrarItinerario();
 			//System.out.println();
 		}
 		

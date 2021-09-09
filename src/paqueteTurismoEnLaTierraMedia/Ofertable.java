@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 //import jdk.internal.misc.FileSystemOption;
 
-public class Ofertas {
+public class Ofertable {
 
 	final int MAXIMO_OFERTAS = 50;
 	Promocion[] sugeridas = new Promocion[MAXIMO_OFERTAS];
 	private int contadorSugeridas = 0;
 
-	public Ofertas(Usuario usuario, Atracciones atraccionesParque, Promociones promocionesParque) {
+	public Ofertable(Usuario usuario, Atracciones atraccionesParque, Promociones promocionesParque) {
 		Scanner in = new Scanner(System.in);
 //		double costoPromo = 0;
 		// buscar las promos que tengan el tipo preferido del usuario las guarda en
@@ -19,7 +19,6 @@ public class Ofertas {
 		for (int i = 0; i < promocionesParque.getPromociones().length; i++) {
 			if (promocionesParque.getPromociones()[i].getTipoAtraccion().equals(usuario.getAtraccionPreferida())) {
 				this.sugeridas[contadorSugeridas] = promocionesParque.getPromociones()[i];
-				// costoPromo = this.sugeridas[contadorSugeridas].getCosto();
 				contadorSugeridas++;
 			}
 		}
@@ -39,7 +38,7 @@ public class Ofertas {
 			String entradaConsola = in.nextLine();
 			String respuesta = entradaConsola.toUpperCase();
 			if (respuesta.equals("S")) {
-				System.out.println("HACER METODO COMPRAR!!!!");
+				System.out.println("PROMOCION COMPRADA CON EXITO!");
 				this.comprarPromo(usuario, this.sugeridas[i], atraccionesParque);
 				System.out.println("\n\n\n\n");
 
@@ -52,13 +51,25 @@ public class Ofertas {
 		System.out.println();
 	}
 
+	@SuppressWarnings("unlikely-arg-type")
 	private void comprarPromo(Usuario usuario, Promocion promocion, Atracciones atraccionesParque) {
 		if (lasAtraccionesDeLaPromoTienenCupo(promocion.getAtraccionesDeLaPromo(), atraccionesParque)) {
 			restarCupoDeLasAtraccionesPromocion(promocion.getAtraccionesDeLaPromo(), atraccionesParque);
 			usuario.setSaldo(usuario.getSaldo() - promocion.getCosto());
 			usuario.setTiempo(usuario.getTiempo() - promocion.getTiempoPromo());
-		
-			//agregarAlItinerario(usuario, atraccionesParque);
+			agregarPromoAlItinerario(usuario, promocion, atraccionesParque);
+			
+		}
+	}
+
+	private void agregarPromoAlItinerario(Usuario usuario, Promocion promocion, Atracciones atraccionesParque) {
+		for (int i = 0; i < promocion.getAtraccionesDeLaPromo().length; i++) {				
+			for (int j = 0; j < atraccionesParque.getAtracciones().length; j++) {					
+				if (promocion.getAtraccionesDeLaPromo()[i].equals(atraccionesParque.getAtracciones()[j].getNombre())) {
+					
+					usuario.addAtraccionAlItinerario(atraccionesParque.getAtracciones()[j]);
+				}
+			}
 		}
 	}
 
