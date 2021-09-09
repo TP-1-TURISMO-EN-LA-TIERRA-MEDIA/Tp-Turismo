@@ -16,17 +16,11 @@ public class Usuario {
 		this.presupuesto = presupuesto;
 		this.tiempo = tiempo;
 		this.atraccionPreferida = atraccionPreferida;
-		this.setSaldo(0);
+		this.saldo=presupuesto;
 		
 	}
 	
-	public double getSaldo() {
-		return saldo;
-	}
-	
-	private void setSaldo(double unSaldoInicial) {
-		this.saldo = unSaldoInicial;
-	}
+
 
 	public Itinerario getItinerario() {
 		return itinerario;
@@ -44,6 +38,18 @@ public class Usuario {
 	public double getPresupuesto() {
 		return presupuesto;
 	}
+
+	public double getSaldo() {
+		return saldo;
+	}
+
+
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
+
 
 	public void setPresupuesto(double presupuesto) {
 		this.presupuesto = presupuesto;
