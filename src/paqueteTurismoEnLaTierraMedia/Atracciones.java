@@ -7,6 +7,7 @@ import java.io.IOException;
 public class Atracciones {
 	
 	Atraccion[] atracciones;
+	int cantidadAtracciones = 0;
 	
 	public Atraccion[] getAtracciones() {
 		return atracciones;
@@ -25,7 +26,7 @@ public class Atracciones {
 				String linea = br.readLine(); // lee primera linea donde esta la dimension del arreglo
 				String[] unaAtraccion = linea.split(";");
 				int dimensionArray = Integer.parseInt(unaAtraccion[0]);
-
+					this.cantidadAtracciones=dimensionArray;
 				atracciones = new Atraccion[dimensionArray];
 				// atracciones es el array donde se guardan todas las atracciones
 

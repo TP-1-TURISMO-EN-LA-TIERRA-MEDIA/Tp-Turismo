@@ -15,7 +15,7 @@ public class comparadorPorMayorCosto implements Comparator<Promocion> {
 		if (diferenciaCosto!= 0) {
 			return diferenciaCosto > 0 ? 1: (diferenciaCosto<0 ?-1:0);
 		}
-		int diferenciaTiempo = promo1.getTiempoPromo()-promo2.getTiempoPromo();
+		int diferenciaTiempo = -(promo1.getTiempoPromo()-promo2.getTiempoPromo());
 		if (diferenciaTiempo!= 0) {
 			return diferenciaTiempo > 0 ? 1: (diferenciaTiempo<0 ?-1:0);
 		}

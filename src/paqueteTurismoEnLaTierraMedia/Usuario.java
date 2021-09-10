@@ -9,6 +9,8 @@ public class Usuario {
 	private Atraccion[] itinerario;
 	private int contadorItinerario = 0;
 
+
+
 	public Usuario(String nombre, double presupuesto, double tiempo, String atraccionPreferida) {
 		this.nombre = nombre;
 		this.presupuesto = presupuesto;
@@ -23,12 +25,16 @@ public class Usuario {
 		
 	}
 	
+	public int getContadorItinerario() {
+		return contadorItinerario;
+	}
 	
 	public void mostrarItinerario() {
 		System.out.println("El itinerario del usuario es el siguiente: ");
 		for (int i =0; i < contadorItinerario; i++) {
 			System.out.println(this.getItinerario()[i].getNombre());
 		}
+		System.out.println("\n\n\n");
 	}
 	
 	public void addAtraccionAlItinerario(Atraccion unaAtraccion) {

@@ -1,6 +1,6 @@
 package paqueteTurismoEnLaTierraMedia;
 
-public class Atraccion {
+public class Atraccion implements Comparable <Atraccion>{
 
 	private String nombre;
 	private double costo;
@@ -54,6 +54,12 @@ public class Atraccion {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	@Override
+	public int compareTo(Atraccion o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
