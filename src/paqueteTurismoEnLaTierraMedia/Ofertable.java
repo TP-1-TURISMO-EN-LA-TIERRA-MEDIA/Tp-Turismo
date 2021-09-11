@@ -23,15 +23,36 @@ public class Ofertable {
 			}
 		}
 		ofrecerPromociones(usuario, atraccionesParque, in);
-		ofrecerAtracciones(usuario, atraccionesParque);
+		ofrecerAtracciones(usuario, atraccionesParque, in);
 		System.out.println();
 	}
 
-	private void ofrecerAtracciones(Usuario usuario, Atracciones atraccionesParque) {
-		int cant=atraccionesParque.cantidadAtracciones;	
+	// esta saliendo mal el metodo. repite varias veces las atracciones
+
+	@SuppressWarnings("unchecked")
+	private void ofrecerAtracciones(Usuario usuario, Atracciones atraccionesParque, Scanner in) {
+		int cant = atraccionesParque.cantidadAtracciones;
 		Arrays.sort(atraccionesParque.getAtracciones(), 0, cant, new comparadorAtraccionesPorMayorCosto());
-		
+		for (int i = 0; i < usuario.getContadorItinerario(); i++) {
+			for (int j = 0; j < atraccionesParque.cantidadAtracciones; j++) {
+				if (usuario.yaCompre(atraccionesParque.getAtracciones()[j])) {
+					System.out.println("entra al if de ya compre");
+				} else {
+					System.out.println("Atraccion: " + atraccionesParque.getAtracciones()[j].getNombre());
+					System.out.println("Desea comprar la Promo? S/N: ");
+					String entradaConsola = in.nextLine();
+					String respuesta = entradaConsola.toUpperCase();
+					if (respuesta.equals("S")) {
+						usuario.comprarAtraccion(atraccionesParque.getAtracciones()[j]);
+	
+						System.out.println("hacer metodo de COMPRAAA" + "\n\n");
+					}
+				}
+			}
+		}
 	}
+
+
 
 	private void ofrecerPromociones(Usuario usuario, Atracciones atraccionesParque, Scanner in) {
 		this.ordenarSugerencias();// se ordena por mayor costo de promociones
@@ -49,19 +70,18 @@ public class Ofertable {
 				if (respuesta.equals("S")) {
 					this.comprarPromo(usuario, this.sugeridas[i], atraccionesParque);
 					System.out.println("\n\n");
-
 				} else {
 					System.out.println("No se compro la promo." + "\n\n");
-
 				}
 			}
 		}
 	}
 
+	
 	private void mostrarCostoYTiempoPromo(int i) {
 		System.out.println("Costo de la promocion:           " + this.sugeridas[i].getCosto() + " M.O."
-				+ "                Tiempo de la Promo:            " + this.sugeridas[i].getTiempoPromo()
-				+ "   hs" + "\n");
+				+ "                Tiempo de la Promo:            " + this.sugeridas[i].getTiempoPromo() + "   hs"
+				+ "\n");
 	}
 
 	private void mostrarSaldoYTiempoUsuario(Usuario usuario) {
@@ -86,41 +106,39 @@ public class Ofertable {
 
 	private void comprarPromo(Usuario usuario, Promocion promocion, Atracciones atraccionesParque) {
 		if (lasAtraccionesDeLaPromoTienenCupo(promocion.getAtraccionesDeLaPromo(), atraccionesParque)) {
+			
 			restarCupoDeLasAtraccionesPromocion(promocion.getAtraccionesDeLaPromo(), atraccionesParque);
 			usuario.setSaldo(usuario.getSaldo() - promocion.getCosto());
 			usuario.setTiempo(usuario.getTiempo() - promocion.getTiempoPromo());
-			agregarPromoAlItinerario(usuario, promocion, atraccionesParque);
+			agregarPromoAlItinerario(usuario, promocion.getAtraccionesDeLaPromo(), atraccionesParque);
 			if (promocion.getTipoPromo().equals("AxB")) {
-				agregarAtraccionesGratisAlItinerario(usuario, promocion.getAtraccionesGratis(),
-						atraccionesParque);
+				agregarPromoAlItinerario(usuario, promocion.getAtraccionesGratis(), atraccionesParque);
 			}
 			System.out.println("PROMOCION COMPRADA CON EXITO!");
 		}
 	}
 
-	private void agregarPromoAlItinerario(Usuario usuario, Promocion promocion, Atracciones atraccionesParque) {
-		for (int i = 0; i < promocion.getAtraccionesDeLaPromo().length; i++) {
+	private void agregarPromoAlItinerario(Usuario usuario, String[] atracciones, Atracciones atraccionesParque) {
+		for (int i = 0; i < atracciones.length; i++) {
 			for (int j = 0; j < atraccionesParque.getAtracciones().length; j++) {
-				if (promocion.getAtraccionesDeLaPromo()[i].equals(atraccionesParque.getAtracciones()[j].getNombre())) {
+				if (atracciones[i].equals(atraccionesParque.getAtracciones()[j].getNombre())) {
 					usuario.addAtraccionAlItinerario(atraccionesParque.getAtracciones()[j]);
-					
 				}
 			}
 		}
 	}
 
-	private void agregarAtraccionesGratisAlItinerario(Usuario usuario, String[] atraccionesGratis,
-			Atracciones atraccionesParque) {
-		for (int i = 0; i < atraccionesGratis.length; i++) {
-			for (int j = 0; j < atraccionesParque.getAtracciones().length; j++) {
-				if (atraccionesGratis[i].equals(atraccionesParque.getAtracciones()[j].getNombre())) {
-					usuario.addAtraccionAlItinerario(atraccionesParque.getAtracciones()[j]);
-
-				}
-			}
-		}
-
-	}
+//	private void agregarAtraccionesGratisAlItinerario(Usuario usuario, String[] atraccionesGratis,
+//			Atracciones atraccionesParque) {
+//		for (int i = 0; i < atraccionesGratis.length; i++) {
+//			for (int j = 0; j < atraccionesParque.getAtracciones().length; j++) {
+//				if (atraccionesGratis[i].equals(atraccionesParque.getAtracciones()[j].getNombre())) {
+//					usuario.addAtraccionAlItinerario(atraccionesParque.getAtracciones()[j]);
+//				}
+//			}
+//		}
+//
+//	}
 
 //	private double tiempoDeLaPromo(String[] atraccionesDeLaPromo, Atracciones atraccionesParque) {
 //
@@ -163,14 +181,6 @@ public class Ofertable {
 			}
 			i++;
 		}
-
-	}
-
-	private void comprarAtraccion(Usuario usuario, Promocion promocion, Atracciones atraccionesParque) {
-		double saldo = 0;
-		usuario.setSaldo(usuario.getSaldo() - promocion.getCosto());
-
-		// usuario.agregarAlItinerario(promocion.)
 
 	}
 

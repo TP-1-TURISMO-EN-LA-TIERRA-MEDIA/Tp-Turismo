@@ -62,4 +62,10 @@ public class Atraccion implements Comparable <Atraccion>{
 		return 0;
 	}
 
+	
+
+	public void restarCupo() {
+		this.setCupo(this.getCupo()-1);
+	}
+
 }
