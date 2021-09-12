@@ -30,8 +30,10 @@ public class Usuario {
 
 	public boolean yaCompre(Atraccion atraccion) {
 		for (int i = 0; i < contadorItinerario; i++) {
-			if (this.getItinerario()[i].getNombre().equals(atraccion.getNombre()))
+			if (this.getItinerario()[i].getNombre().equals(atraccion.getNombre())) {
+				
 				return true;
+			}
 		}
 		return false;
 	}

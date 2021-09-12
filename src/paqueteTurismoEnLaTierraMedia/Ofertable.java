@@ -31,28 +31,40 @@ public class Ofertable {
 
 	@SuppressWarnings("unchecked")
 	private void ofrecerAtracciones(Usuario usuario, Atracciones atraccionesParque, Scanner in) {
+		boolean noSeCompro= true;
+
 		int cant = atraccionesParque.cantidadAtracciones;
 		Arrays.sort(atraccionesParque.getAtracciones(), 0, cant, new comparadorAtraccionesPorMayorCosto());
-		for (int i = 0; i < usuario.getContadorItinerario(); i++) {
-			for (int j = 0; j < atraccionesParque.cantidadAtracciones; j++) {
-				if (usuario.yaCompre(atraccionesParque.getAtracciones()[j])) {
-					System.out.println("entra al if de ya compre");
-				} else {
-					System.out.println("Atraccion: " + atraccionesParque.getAtracciones()[j].getNombre());
-					System.out.println("Desea comprar la Promo? S/N: ");
-					String entradaConsola = in.nextLine();
-					String respuesta = entradaConsola.toUpperCase();
-					if (respuesta.equals("S")) {
-						usuario.comprarAtraccion(atraccionesParque.getAtracciones()[j]);
-	
-						System.out.println("hacer metodo de COMPRAAA" + "\n\n");
-					}
+		for (int i = 0; i < atraccionesParque.cantidadAtracciones; i++) {
+			for (int j = 0; j < usuario.getContadorItinerario(); j++) {
+				if (usuario.yaCompre(atraccionesParque.getAtracciones()[i])) {				
+					noSeCompro = false;
+				} 
+			}
+			double tiempoDeLaAtraccion= atraccionesParque.getAtracciones()[i].getTiempo();
+			if(noSeCompro == false && usuario.getTiempo()> tiempoDeLaAtraccion) {
+				mostrarSaldoYTiempoUsuario(usuario);
+				mostrarCostoYTiempoAtraccion(atraccionesParque.getAtracciones()[i]);
+				System.out.println("Atraccion: " + atraccionesParque.getAtracciones()[i].getNombre());
+				System.out.println("Desea comprar la Promo? S/N: ");
+				String entradaConsola = in.nextLine();
+				String respuesta = entradaConsola.toUpperCase();
+				if (respuesta.equals("S")) {
+					usuario.comprarAtraccion(atraccionesParque.getAtracciones()[i]);
+
+					
 				}
 			}
 		}
 	}
 
 
+
+	private void mostrarCostoYTiempoAtraccion(Atraccion atraccion) {
+		System.out.println("Costo de la atraccion:           " + atraccion.getCosto() + " M.O."
+				+ "                Tiempo de la Promo:            " + atraccion.getTiempo() + "   hs"
+				+ "\n");
+	}
 
 	private void ofrecerPromociones(Usuario usuario, Atracciones atraccionesParque, Scanner in) {
 		this.ordenarSugerencias();// se ordena por mayor costo de promociones
@@ -78,6 +90,9 @@ public class Ofertable {
 	}
 
 	
+	
+	
+
 	private void mostrarCostoYTiempoPromo(int i) {
 		System.out.println("Costo de la promocion:           " + this.sugeridas[i].getCosto() + " M.O."
 				+ "                Tiempo de la Promo:            " + this.sugeridas[i].getTiempoPromo() + "   hs"
