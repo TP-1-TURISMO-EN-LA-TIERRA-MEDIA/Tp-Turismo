@@ -39,10 +39,17 @@ public class Usuario {
 	}
 
 	public void mostrarItinerario() {
+		double tiempoTotal=0;
+		double costoTotal=0;
 		System.out.println("El itinerario del usuario es el siguiente: ");
 		for (int i = 0; i < contadorItinerario; i++) {
 			System.out.println(this.getItinerario()[i].getNombre());
+			tiempoTotal+= this.getItinerario()[i].getTiempo();
+			costoTotal+= this.getItinerario()[i].getCosto();
 		}
+		System.out.println(". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  . .");
+		System.out.println("Tiempo total del Itinerario: " + tiempoTotal + " hs.");
+		System.out.println("Costo total del Itinerario: " + costoTotal + " Monedas de Oro." );
 		System.out.println("\n\n\n");
 	}
 

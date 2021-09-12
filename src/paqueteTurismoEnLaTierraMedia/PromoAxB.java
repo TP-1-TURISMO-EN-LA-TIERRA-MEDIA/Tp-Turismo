@@ -1,7 +1,7 @@
 package paqueteTurismoEnLaTierraMedia;
 
 public class PromoAxB extends Promocion {
-	// public String atraccionGratis;
+	
 
 	public PromoAxB(String tipoPromo, String tipoAtraccion, String[] atraccionesPromo, String[] atraccionesGratis) {
 		super(tipoPromo, tipoAtraccion, atraccionesPromo);

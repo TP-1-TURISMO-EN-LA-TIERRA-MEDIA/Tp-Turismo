@@ -4,7 +4,7 @@ public class PromoAbsoluta extends Promocion {
 	
 	
 	public PromoAbsoluta(String tipoPromo, String tipoAtraccion, String[] atraccionesPromo , int oferta) {
-		super(tipoPromo,tipoAtraccion, atraccionesPromo/*traccion1, atraccion2*/);
+		super(tipoPromo,tipoAtraccion, atraccionesPromo);
 		setCosto(oferta);
 		
 	}
@@ -29,7 +29,7 @@ public class PromoAbsoluta extends Promocion {
 			System.out.print(super.getAtraccionesDeLaPromo()[i].toString() + " ");							
 		}
 		System.out.println(super.getCosto() + " si se compran juntas");
-		System.out.println(super.getCosto() + "             " /* + super.getTiempoPromo()*/);
+		System.out.println(super.getCosto() + "             " );
 		
 	}
 

@@ -48,8 +48,6 @@ public class Promociones {
 						this.promociones[i] = new PromoAbsoluta(tipoPromo, tipoAtraccion, atraccionesPromo, oferta);
 					}
 					if (tipoPromo.equals("AxB")) {
-						// el codigo de impresion hay que borrarlo es solo para ver si hacia bien el metodo
-
 						String[] atraccionesGratis = unaPromocion[unaPromocion.length - 1].split(",");
 
 						this.promociones[i] = new PromoAxB(tipoPromo, tipoAtraccion, atraccionesPromo,
@@ -91,7 +89,6 @@ public class Promociones {
 	public double costoPromocion(Promocion unaPromo, Atraccion[] atracciones) {
 		// este metodo busca denro del arreglo de las promocioes y saca el costo del
 		// arreglo donde estan las atracciones
-		// System.out.println("Tipo Promo: " + unaPromo.getTipoPromo());
 		if (unaPromo.getTipoPromo().equals("Absoluta")) {
 
 			return unaPromo.getCosto();

@@ -13,18 +13,15 @@ public abstract class Promocion implements Comparable <Promocion>{
 	
 
 	public Promocion(String tipoPromo, String tipoAtraccion, String[] atraccionesPromo) {
-		// String auxiliar = atraccionesPomocionadas.;
-
 		this.tipoPromo = tipoPromo;
 		this.tipoAtraccion = tipoAtraccion;
 		atraccionesDeLaPromo = atraccionesPromo;
-
 	}
 
 
 	
 	public String[] getAtraccionesDeLaPromo() {
-		return atraccionesDeLaPromo;//separadas por ","
+		return atraccionesDeLaPromo;
 	}
 
 	

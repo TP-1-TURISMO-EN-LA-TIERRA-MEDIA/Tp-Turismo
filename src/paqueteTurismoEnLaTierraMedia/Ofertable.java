@@ -3,7 +3,7 @@ package paqueteTurismoEnLaTierraMedia;
 import java.util.Arrays;
 import java.util.Scanner;
 
-//import jdk.internal.misc.FileSystemOption;
+
 
 public class Ofertable {
 
@@ -13,7 +13,6 @@ public class Ofertable {
 
 	public Ofertable(Usuario usuario, Atracciones atraccionesParque, Promociones promocionesParque) {
 		Scanner in = new Scanner(System.in);
-//		double costoPromo = 0;
 		// buscar las promos que tengan el tipo preferido del usuario las guarda en
 		// sugeridas
 		for (int i = 0; i < promocionesParque.getPromociones().length; i++) {
@@ -27,7 +26,7 @@ public class Ofertable {
 		System.out.println();
 	}
 
-	// esta saliendo mal el metodo. repite varias veces las atracciones
+	
 
 	@SuppressWarnings("unchecked")
 	private void ofrecerAtracciones(Usuario usuario, Atracciones atraccionesParque, Scanner in) {
@@ -55,8 +54,6 @@ public class Ofertable {
 				String respuesta = entradaConsola.toUpperCase();
 				if (respuesta.equals("S")) {
 					usuario.comprarAtraccion(atraccionesParque.getAtracciones()[i]);
-
-					
 				}
 			}
 		}
@@ -73,8 +70,8 @@ public class Ofertable {
 		this.ordenarSugerencias();// se ordena por mayor costo de promociones
 
 		for (int i = 0; i < contadorSugeridas; i++) {
-			if (!estaEnSugeridas(this.sugeridas[i], usuario)) {
-// ACA HAY QUE CONSIDERAR MOSTRAR SOLO LAS QUE NO SE REPITEN Y QUE NO HAYA COMPRADO 			
+			if (!estaEnSugeridas(this.sugeridas[i], usuario)) {		
+				System.out.println("=================================================================================================");
 				this.ofrecerPromo(this.sugeridas[i]);
 				System.out.println();
 				mostrarSaldoYTiempoUsuario(usuario);
@@ -146,22 +143,7 @@ public class Ofertable {
 		}
 	}
 
-//	private void agregarAtraccionesGratisAlItinerario(Usuario usuario, String[] atraccionesGratis,
-//			Atracciones atraccionesParque) {
-//		for (int i = 0; i < atraccionesGratis.length; i++) {
-//			for (int j = 0; j < atraccionesParque.getAtracciones().length; j++) {
-//				if (atraccionesGratis[i].equals(atraccionesParque.getAtracciones()[j].getNombre())) {
-//					usuario.addAtraccionAlItinerario(atraccionesParque.getAtracciones()[j]);
-//				}
-//			}
-//		}
-//
-//	}
 
-//	private double tiempoDeLaPromo(String[] atraccionesDeLaPromo, Atracciones atraccionesParque) {
-//
-//		return 0;
-//	}
 
 	private void restarCupoDeLasAtraccionesPromocion(String[] atraccionesDeLaPromo, Atracciones atraccionesParque) {
 		for (int i = 0; i < atraccionesDeLaPromo.length; i++) {
@@ -189,26 +171,26 @@ public class Ofertable {
 		return hayCupo;
 	}
 
-	private void restarCupoAtraccion(String atraccion, Atracciones atraccionesParque) {
-		int i = 0;
-		boolean encontrado = false;
-		while (i < atraccionesParque.getAtracciones().length && !encontrado) {
-			if (atraccionesParque.getAtracciones()[i].equals(atraccion)) {
-				atraccionesParque.getAtracciones()[i].setCupo(atraccionesParque.getAtracciones()[i].getCupo() - 1);
-				encontrado = true;
-			}
-			i++;
-		}
+//	private void restarCupoAtraccion(String atraccion, Atracciones atraccionesParque) {
+//		int i = 0;
+//		boolean encontrado = false;
+//		while (i < atraccionesParque.getAtracciones().length && !encontrado) {
+//			if (atraccionesParque.getAtracciones()[i].equals(atraccion)) {
+//				atraccionesParque.getAtracciones()[i].setCupo(atraccionesParque.getAtracciones()[i].getCupo() - 1);
+//				encontrado = true;
+//			}
+//			i++;
+//		}
+//
+//	}
 
-	}
-
-	private boolean tieneTiempo(Usuario usuario, Promocion promocion) {
-		return usuario.getTiempo() >= promocion.getTiempoPromo();
-	}
-
-	private boolean tieneSaldo(Usuario usuario, Promocion promocion) {
-		return usuario.getSaldo() >= promocion.getCosto();
-	}
+//	private boolean tieneTiempo(Usuario usuario, Promocion promocion) {
+//		return usuario.getTiempo() >= promocion.getTiempoPromo();
+//	}
+//
+//	private boolean tieneSaldo(Usuario usuario, Promocion promocion) {
+//		return usuario.getSaldo() >= promocion.getCosto();
+//	}
 
 	private void ofrecerPromo(Promocion promocion) {
 		System.out.print("Pack " + promocion.getTipoAtraccion() + ": ");

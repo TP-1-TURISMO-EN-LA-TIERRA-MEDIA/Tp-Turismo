@@ -19,12 +19,7 @@ public class TurismoTierraMedia {
 			System.out.println("Usuario: " + usuariosParque.usuarios[i].getNombre() + "\n");
 			ofertas = new Ofertable(usuariosParque.usuarios[i], atraccionesParque, promocionesParque);
 			System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-			usuariosParque.usuarios[i].mostrarItinerario();
-			//System.out.println();
-		}
-		
+			usuariosParque.usuarios[i].mostrarItinerario();	
+		}	
 	}
-	
-	
-	
 }
