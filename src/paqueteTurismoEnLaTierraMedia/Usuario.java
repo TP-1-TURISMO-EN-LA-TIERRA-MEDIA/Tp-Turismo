@@ -102,6 +102,7 @@ public class Usuario {
 		atraccion.restarCupo();
 		this.itinerario[contadorItinerario] = atraccion;
 		contadorItinerario++;
+		System.out.println("ATRACCION COMPRADA CON EXITO!");
 	}
 
 }

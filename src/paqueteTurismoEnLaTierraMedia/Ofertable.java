@@ -42,11 +42,15 @@ public class Ofertable {
 				} 
 			}
 			double tiempoDeLaAtraccion= atraccionesParque.getAtracciones()[i].getTiempo();
-			if(noSeCompro == false && usuario.getTiempo()> tiempoDeLaAtraccion) {
+			if(noSeCompro == false && usuario.getTiempo()> tiempoDeLaAtraccion && atraccionesParque.getAtracciones()[i].getCupo()>0) {
+				System.out.println("=================================================================================================");
 				mostrarSaldoYTiempoUsuario(usuario);
-				mostrarCostoYTiempoAtraccion(atraccionesParque.getAtracciones()[i]);
 				System.out.println("Atraccion: " + atraccionesParque.getAtracciones()[i].getNombre());
-				System.out.println("Desea comprar la Promo? S/N: ");
+				
+				mostrarCostoYTiempoAtraccion(atraccionesParque.getAtracciones()[i]);
+				System.out.println("Cupo de la atraccion: " + atraccionesParque.getAtracciones()[i].getCupo()+ "\n");
+				
+				System.out.println("Desea comprar la Atraccion? S/N: ");
 				String entradaConsola = in.nextLine();
 				String respuesta = entradaConsola.toUpperCase();
 				if (respuesta.equals("S")) {
@@ -62,8 +66,7 @@ public class Ofertable {
 
 	private void mostrarCostoYTiempoAtraccion(Atraccion atraccion) {
 		System.out.println("Costo de la atraccion:           " + atraccion.getCosto() + " M.O."
-				+ "                Tiempo de la Promo:            " + atraccion.getTiempo() + "   hs"
-				+ "\n");
+				+ "                Tiempo de la Promo:            " + atraccion.getTiempo() + "   hs");
 	}
 
 	private void ofrecerPromociones(Usuario usuario, Atracciones atraccionesParque, Scanner in) {
@@ -101,7 +104,7 @@ public class Ofertable {
 
 	private void mostrarSaldoYTiempoUsuario(Usuario usuario) {
 		System.out.print("Saldo del monedero del Usuario: " + usuario.getSaldo() + " M.O." + "             "
-				+ "   Tiempo disponible del Usuario: " + usuario.getTiempo() + " hs" + "\n");
+				+ "   Tiempo disponible del Usuario: " + usuario.getTiempo() + " hs" + "\n\n");
 	}
 
 	private boolean estaEnSugeridas(Promocion promocion, Usuario usuario) {
