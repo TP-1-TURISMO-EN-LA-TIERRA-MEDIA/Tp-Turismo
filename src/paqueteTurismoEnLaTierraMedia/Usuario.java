@@ -39,20 +39,32 @@ public class Usuario {
 	}
 
 	public void mostrarItinerario() {
-		double tiempoTotal=0;
-		double costoTotal=0;
 		System.out.println("El itinerario del usuario es el siguiente: ");
 		for (int i = 0; i < contadorItinerario; i++) {
 			System.out.println(this.getItinerario()[i].getNombre());
-			tiempoTotal+= this.getItinerario()[i].getTiempo();
-			costoTotal+= this.getItinerario()[i].getCosto();
 		}
 		System.out.println(". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  . .");
-		System.out.println("Tiempo total del Itinerario: " + tiempoTotal + " hs.");
-		System.out.println("Costo total del Itinerario: " + costoTotal + " Monedas de Oro." );
+		System.out.println("Tiempo total del Itinerario: " + this.tiempoTotalItinerario() + " hs.");
+		System.out.println("Costo total del Itinerario: " + this.costoTotalItinerario() + " Monedas de Oro." );
 		System.out.println("\n\n\n");
 	}
 
+	public double tiempoTotalItinerario() {
+		double total=0;
+		for (int i=0; i< this.contadorItinerario; i++) {
+			total+= this.getItinerario()[i].getTiempo();
+		}
+		return total;
+	}
+	
+	public double costoTotalItinerario() {
+		double total=0;
+		for (int i=0; i< this.contadorItinerario; i++) {
+			total+= this.getItinerario()[i].getCosto();
+		}
+		return total;
+	}
+	
 	public void addAtraccionAlItinerario(Atraccion unaAtraccion) {
 		this.itinerario[contadorItinerario] = unaAtraccion;
 		contadorItinerario++;
@@ -114,12 +126,14 @@ public class Usuario {
 
 
 	public void generarArchivoItinerario() throws IOException {
-		PrintWriter salida= new PrintWriter(new FileWriter ("Itinerario_ "+ this.getNombre()));
+		PrintWriter salida= new PrintWriter(new FileWriter ("Usuario: "+ this.getNombre()));
 		for(int i=0; i < this.contadorItinerario; i++) {
 			String atraccion= this.getItinerario()[i].getNombre();
 			salida.println(atraccion);
 			
 		}
+		salida.println("Tiempo total del itinerario: " + this.tiempoTotalItinerario());
+		salida.println("Costo Total a Pagar por el Itinerario: " + this.costoTotalItinerario());
 		salida.close();
 }
 		
