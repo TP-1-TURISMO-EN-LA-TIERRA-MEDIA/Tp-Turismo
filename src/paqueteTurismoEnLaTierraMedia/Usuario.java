@@ -1,5 +1,9 @@
 package paqueteTurismoEnLaTierraMedia;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class Usuario {
 	private String nombre;
 	private double presupuesto;
@@ -16,13 +20,9 @@ public class Usuario {
 		this.atraccionPreferida = atraccionPreferida;
 		this.saldo = presupuesto;
 		itinerario = new Atraccion[50];
-
 	}
 
-	public void generarArchivoItinerario() {
-
-	}
-
+	
 	public int getContadorItinerario() {
 		return contadorItinerario;
 	}
@@ -111,5 +111,18 @@ public class Usuario {
 		contadorItinerario++;
 		System.out.println("ATRACCION COMPRADA CON EXITO!");
 	}
+
+
+	public void generarArchivoItinerario() throws IOException {
+		PrintWriter salida= new PrintWriter(new FileWriter ("Itinerario_ "+ this.getNombre()));
+		for(int i=0; i < this.contadorItinerario; i++) {
+			String atraccion= this.getItinerario()[i].getNombre();
+			salida.println(atraccion);
+			
+		}
+		salida.close();
+}
+		
+	
 
 }
