@@ -34,10 +34,11 @@ public class Ofertable {
 			for (int j = 0; j < usuario.getContadorItinerario(); j++) {
 				if (usuario.yaCompre(atraccionesParque.getAtracciones()[i])) {
 					seCompro = true;
+					
 				}
 			}
 			double tiempoDeLaAtraccion = atraccionesParque.getAtracciones()[i].getTiempo();
-			if (seCompro == true && usuario.getTiempo() > tiempoDeLaAtraccion
+			if (seCompro != true && usuario.getTiempo() > tiempoDeLaAtraccion
 					&& atraccionesParque.getAtracciones()[i].getCupo() > 0) {
 				System.out.println(
 						"=================================================================================================");
@@ -86,9 +87,9 @@ public class Ofertable {
 		}
 	}
 
-	private void mostrarCostoYTiempoPromo(int i) {
-		System.out.println("Costo de la promocion:           " + this.sugeridas[i].getCosto() + " M.O."
-				+ "                Tiempo de la Promo:            " + this.sugeridas[i].getTiempoPromo() + "   hs"
+	private void mostrarCostoYTiempoPromo(int posPromo) {	
+		System.out.println("Costo de la promocion:           " + this.sugeridas[posPromo].getCosto() + " M.O."
+				+ "                Tiempo de la Promo:            " + this.sugeridas[posPromo].getTiempoPromo() + "   hs"
 				+ "\n");
 	}
 
@@ -109,7 +110,7 @@ public class Ofertable {
 					}
 				}
 			}
-			if (promocion.getTipoPromo().equals("AxB") && promocion.getAtraccionesGratis()!= null) {
+			if (promocion.getTipoPromo().equals("AxB") && promocion.getAtraccionesGratis() != null) {
 				for (int i = 0; i < promocion.getAtraccionesGratis().length; i++) {
 					for (int j = 0; j < usuario.getContadorItinerario(); j++) {
 						String nombreAtraccionGratisPromocion = promocion.getAtraccionesGratis()[i].toString();
@@ -127,10 +128,10 @@ public class Ofertable {
 	private void comprarPromo(Usuario usuario, Promocion promocion, Atracciones atraccionesParque) {
 		if (lasAtraccionesDeLaPromoTienenCupo(promocion.getAtraccionesDeLaPromo(), atraccionesParque)) {
 
-			restarCupoDeLasAtraccionesPromocion(promocion.getAtraccionesDeLaPromo(), atraccionesParque);
+			this.restarCupoDeLasAtraccionesPromocion(promocion.getAtraccionesDeLaPromo(), atraccionesParque);
 			usuario.setSaldo(usuario.getSaldo() - promocion.getCosto());
 			usuario.setTiempo(usuario.getTiempo() - promocion.getTiempoPromo());
-			agregarPromoAlItinerario(usuario, promocion.getAtraccionesDeLaPromo(), atraccionesParque);
+			this.agregarPromoAlItinerario(usuario, promocion.getAtraccionesDeLaPromo(), atraccionesParque);
 			if (promocion.getTipoPromo().equals("AxB")) {
 				agregarPromoAlItinerario(usuario, promocion.getAtraccionesGratis(), atraccionesParque);
 			}
@@ -173,27 +174,6 @@ public class Ofertable {
 		}
 		return hayCupo;
 	}
-
-//	private void restarCupoAtraccion(String atraccion, Atracciones atraccionesParque) {
-//		int i = 0;
-//		boolean encontrado = false;
-//		while (i < atraccionesParque.getAtracciones().length && !encontrado) {
-//			if (atraccionesParque.getAtracciones()[i].equals(atraccion)) {
-//				atraccionesParque.getAtracciones()[i].setCupo(atraccionesParque.getAtracciones()[i].getCupo() - 1);
-//				encontrado = true;
-//			}
-//			i++;
-//		}
-//
-//	}
-
-//	private boolean tieneTiempo(Usuario usuario, Promocion promocion) {
-//		return usuario.getTiempo() >= promocion.getTiempoPromo();
-//	}
-//
-//	private boolean tieneSaldo(Usuario usuario, Promocion promocion) {
-//		return usuario.getSaldo() >= promocion.getCosto();
-//	}
 
 	private void ofrecerPromo(Promocion promocion) {
 		System.out.print("Pack " + promocion.getTipoAtraccion() + ": ");

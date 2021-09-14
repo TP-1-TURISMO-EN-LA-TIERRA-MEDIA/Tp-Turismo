@@ -38,7 +38,7 @@ public class Promociones {
 					String tipoPromo = unaPromocion[0];
 					String tipoAtraccion = unaPromocion[1];
 					String[] atraccionesPromo = unaPromocion[2].split(",");
-					
+
 					if (tipoPromo.equals("Porcentual")) {
 						int oferta = Integer.parseInt(unaPromocion[3]);
 						this.promociones[i] = new PromoPorcentual(tipoPromo, tipoAtraccion, atraccionesPromo, oferta);
@@ -75,13 +75,11 @@ public class Promociones {
 		}
 	}
 
-	
 	public int getCosto(Promocion unaPromo) {
-		
+
 		return 0;
 	}
 
-	
 	public Promocion[] getPromociones() {
 		return promociones;
 	}
@@ -113,17 +111,27 @@ public class Promociones {
 			}
 		}
 	}
-	
+
 	public void setTiempoPromocion(Promocion unaPromo, Atraccion[] atracciones) {
 		int tiempo = 0;
 		for (int i = 0; i < unaPromo.getAtraccionesDeLaPromo().length; i++) {
 			for (int j = 0; j < atracciones.length; j++) {
 				if (atracciones[j].getNombre().equals(unaPromo.getAtraccionesDeLaPromo()[i])) {
 					tiempo += atracciones[j].getTiempo();
-					unaPromo.setTiempoPromo(tiempo);
+
 				}
 			}
 		}
-	}
+		if (unaPromo.getTipoPromo().equals("AxB") && unaPromo.getAtraccionesGratis() != null)
+			for (int i = 0; i < unaPromo.getAtraccionesGratis().length; i++) {
+				for (int j = 0; j < atracciones.length; j++) {
+					if (atracciones[j].getNombre().equals(unaPromo.getAtraccionesGratis()[i])) {
+						tiempo += atracciones[j].getTiempo();
 
+					}
+				}
+			}
+
+		unaPromo.setTiempoPromo(tiempo);
+	}
 }
