@@ -1,4 +1,5 @@
 Abismo de Helm
 Erebor
-Tiempo total del itinerario: 5.0
-Costo Total a Pagar por el Itinerario: 17.0
+Jungla
+Tiempo total del itinerario: 6.3
+Costo Total a Pagar por el Itinerario: 40.0

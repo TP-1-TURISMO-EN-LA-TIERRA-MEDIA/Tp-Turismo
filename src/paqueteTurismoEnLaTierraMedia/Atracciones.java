@@ -9,6 +9,7 @@ public class Atracciones {
 	Atraccion[] atracciones;
 	int cantidadAtracciones = 0;
 	
+	
 	public Atraccion[] getAtracciones() {
 		return atracciones;
 	}

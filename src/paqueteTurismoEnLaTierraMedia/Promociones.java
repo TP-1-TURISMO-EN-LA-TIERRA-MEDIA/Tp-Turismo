@@ -75,10 +75,7 @@ public class Promociones {
 		}
 	}
 
-	public int getCosto(Promocion unaPromo) {
 
-		return 0;
-	}
 
 	public Promocion[] getPromociones() {
 		return promociones;
