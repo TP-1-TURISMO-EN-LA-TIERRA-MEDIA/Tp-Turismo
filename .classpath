@@ -8,6 +8,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="Main"/>
 	<classpathentry kind="src" path="TurismoEnLaTierraMediaTests"/>
+	<classpathentry kind="src" path="Salida"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

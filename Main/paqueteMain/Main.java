@@ -11,6 +11,8 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		//usuariosParque= new Usuarios("C:\\Users\\Sinred\\Desktop\\PRACTICAS JAVA\\Turismo en tierra media\\usuarios.txt");
 		// COMO ESTA EN LA MISMA CARPETA SOLO PONGO EL NOMBRE DEL ARCHIVO	
-		unParqueUsuarios = new TurismoTierraMedia("usuarios.txt", "atracciones.txt", "promociones.txt");		
+		unParqueUsuarios = new TurismoTierraMedia("C:\\Users\\Sinred\\eclipse-workspace\\TurismoEnLaTierraMedia\\Entrada\\usuarios.txt",
+				"C:\\Users\\Sinred\\eclipse-workspace\\TurismoEnLaTierraMedia\\Entrada\\atracciones.txt",
+				"C:\\Users\\Sinred\\eclipse-workspace\\TurismoEnLaTierraMedia\\Entrada\\promociones.txt");		
 }
 }

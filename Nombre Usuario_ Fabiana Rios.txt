@@ -2,4 +2,4 @@ Abismo de Helm
 Erebor
 Jungle Cruise
 Tiempo total del itinerario: 5.5
-Costo Total del Itinerario: 41.0
+Costo Total a Pagar por el Itinerario: 41.0

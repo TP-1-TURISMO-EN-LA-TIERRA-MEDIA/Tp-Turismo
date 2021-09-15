@@ -38,7 +38,7 @@ public class Ofertable {
 				}
 			}
 			double tiempoDeLaAtraccion = atraccionesParque.getAtracciones()[i].getTiempo();
-			if (seCompro != true && usuario.getTiempo() > tiempoDeLaAtraccion
+			if (seCompro == true && usuario.getTiempo() > tiempoDeLaAtraccion
 					&& atraccionesParque.getAtracciones()[i].getCupo() > 0) {
 				System.out.println(
 						"=================================================================================================");

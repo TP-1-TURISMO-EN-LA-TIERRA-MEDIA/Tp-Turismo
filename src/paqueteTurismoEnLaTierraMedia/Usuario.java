@@ -1,6 +1,7 @@
 package paqueteTurismoEnLaTierraMedia;
 
 import java.io.FileWriter;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -126,7 +127,8 @@ public class Usuario {
 
 
 	public void generarArchivoItinerario() throws IOException {
-		PrintWriter salida= new PrintWriter(new FileWriter ("Usuario: "+ this.getNombre()));
+		
+		PrintWriter salida= new PrintWriter(new FileWriter("C:\\Users\\Sinred\\eclipse-workspace\\TurismoEnLaTierraMedia\\Salida\\Nombre Usuario_ " + this.getNombre()+ ".txt"));
 		for(int i=0; i < this.contadorItinerario; i++) {
 			String atraccion= this.getItinerario()[i].getNombre();
 			salida.println(atraccion);
